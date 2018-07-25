@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eleme</title>
+    <link href="css/top&footer.css" rel="stylesheet" type="text/css" />
+    <!--<link href="css/main.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="css/footer.css" rel="stylesheet" type="text/css" />-->
+    <style>
+        body,ul,li{
+            margin:0;
+            padding:0;
+        }
+        li:hover,span:hover,dt:hover,dd:hover,img:hover{
+            cursor:pointer;
+        }
+        a:hover{
+            text-decoration: none;
+            color:#0089dc;
+        }
+        a:visited{
+            text-decoration: none;
+            color:#0089dc;
+        }
+        a:link{
+            text-decoration: none;
+        }
+        .phone:hover .newphone{
+            display: block;
+        }
+        .newphone{
+            display: none;
+            z-index:5;
+            position:absolute;
+            right:-127px;
+            top:55px;
+            width:200px;
+            height:240px;
+            background:white;
+            padding:3px 10px;
+            box-shadow:0 1px 2px;
+        }
+        .newphone:after, .newphone:before {
+            border: solid transparent;
+            content: ' ';
+            height: 0;
+            top:-20px;
+            position: absolute;
+            width: 0;
+        }
+
+        .newphone:before {
+            border-width: 10px;
+            border-bottom-color: #999999;
+            left: 8px;
+        }
+
+        .newphone:after {
+            border-width: 12px;
+            border-bottom-color: #fff;
+            left: 6px;
+        }
+        .list-inline {
+            padding-left: 0;
+            margin-left: -5px;
+            list-style: none;
+        }
+          .main{
+            width:1180px;
+            margin:0 auto;
+            position: relative;
+        }
+        .main_nav{
+            height:96px;
+            margin: 60px 0 0 0;
+            border:1px solid #e6e6e6;
+        }
+        .sub_menu{
+            font-size:14px;
+            color:#666;
+            padding: 0 10px;
+            margin:6px;
+            display: inline-block;
+        }
+        .sub_menu:hover{
+            background:#f6f6f6;
+        }
+        .main_content{
+            margin:20px auto 50px;
+            border:1px solid #e6e6e6;
+        }
+        .main_li{
+            width:25%;
+            border-bottom:1px solid #e6e6e6;
+            float:left;
+            font-size: 12px;
+            position:relative;
+        }
+        .main_li:hover .main_li_cooking{
+            color:#0089dc;
+        }
+        .main_li:hover{
+            background: #f5f5f5;
+        }
+        .main_bao{
+            width:18px;
+            border:1px solid #999;
+            color:#999;
+            text-align: center;
+            line-height: 18px;
+        }
+        .main_top{
+            font-size: 12px;
+            margin-top:12px;
+            height:32px;
+            line-height: 32px;
+        }
+        .main_li_left{
+            width:90px;
+            padding:20px 0 20px 20px;
+            float:left;
+        }
+        .main_nav_left{
+            color:#999;
+            padding:0 20px;
+            font-size: 14px;
+            float:left;
+            line-height: 56px;
+        }
+        .takeout_time{
+            display: block;
+            color:#999;
+            text-align: center;
+            margin-top: 13px;
+        }
+        .main_li_right{
+            width:144px;
+            position:relative;
+           float:left;
+          }
+        .main_li_cooking, .main_li_cooking_new {
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .main_li_reduce{
+            color:#999;
+            margin-top: 3px;
+        }
+        .detail{
+            display:none;
+            width:250px;
+            padding:0 20px  10px 20px;
+            background:white;
+            border:2px solid #ddd;
+            position:absolute;
+            left:294px;
+            top:0;
+            z-index:5;
+        }
+        .detail:after,.detail:before {
+            border: solid transparent;
+            content: ' ';
+            height: 0;
+            width: 0;
+            position: absolute;
+            left:-20px;
+            }
+
+        .detail:after {
+            border-width: 10px;
+            border-right-color: #fff;
+            top:18px;
+        }
+
+        .detail:before {
+            border-width: 12px;
+            border-right-color: #d0d0d0;
+            top:16px;
+            position: absolute;
+            left:-24px;
+        }
+        .main_li:hover>.detail{
+            display: block;
+        }
+        .note{
+            color:#666;
+            height:auto;
+            line-height: 20px;
+        }
+        .note_arrive{
+            width:100%;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            padding:10px 0;
+            background: #f2f2f2;
+        }
+        .arrive{
+            color:black;
+            float: left;
+            width:50%;
+            text-align: center;
+        }
+        .line{
+            color: #cfcfcf;
+        }
+        .arrive_money{
+            float:left;
+            width:49%;
+            text-align: center;
+            border-right:1px solid  grey;
+        }
+        .weixin{
+            background: url("image/icon.d5d696.png") no-repeat  0  -44px;
+            width:28px;
+            height:24px;
+            float:left;
+        }
+        .weibo{
+            background: url("image/icon.d5d696.png") no-repeat 0 -105px;
+            width:28px;
+            height:24px;
+            float:left;
+        }
+        .weixin:hover{
+            background: url("image/icon.d5d696.png") no-repeat  0 -74px;
+        }
+        .weibo:hover{
+            background: url("image/icon.d5d696.png") no-repeat 0 -135px;
+        }
+        .wechat_box{
+            width:130px;
+            height:160px;
+            background:white;
+            padding:4px 6px;
+            box-shadow:0 1px 2px rgba(0,0,0,.5);
+            position:absolute;
+            top:-180px;
+            left:-55px;
+            display: none;
+        }
+        .wechat_box:after, .wechat_box:before {
+            border: solid transparent;
+            content: ' ';
+            height: 0;
+            top: 100%;
+            position: absolute;
+            width: 0;
+        }
+
+        .wechat_box:after {
+            border-width: 10px;
+            border-top-color: #fff;
+            left: 56px;
+        }
+
+        .wechat_box:before {
+            border-width: 12px;
+            border-top-color: rgb(219, 219, 219);
+            left:54px;
+        }
+        .weixin:hover .wechat_box{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="nav" >
+    <div  style="width:1180px;margin:0 auto;">
+        <img  src="image/e.PNG" alt="" style="float:left;height:60px;margin-left:-15px;">
+        <ul class="top_nav  list-inline ">
+            <li class="sub_nav" style="background:#006bc7" >首页</li>
+            <li class="sub_nav" >我的订单</li>
+            <li class="sub_nav" >加盟合作</li>
+            <li class="sub_nav">我的客服</li>
+        </ul>
+        <div  style="float:left;margin-left: 220px">
+            <span class="nav_word" style="float:left;">规则中心</span>
+            <div class="phone" style="float: left;margin-left: 25px;position: relative">
+                    <img class="imagephone" src="image/phone.PNG" alt="" style="height:22px;position: absolute;top:20px;left:0;">
+                    <span class="nav_word " style="margin-left: 30px;">手机应用</span>
+                    <div class="newphone" >
+                        <span style="text-align:center;display:block;color:#333;line-height: 40px;">扫一扫，手机订餐更方便</span>
+                        <img  src="image/wexinqc100@2x.393ade.png" alt="">
+                    </div>
+            </div>
+        </div>
+        <div  style="float:right;">
+            <img src="image/people.png" alt="" style="height:32px;margin-top: 12px;">
+            <span  style="float:right;font-size:14px;color: white;line-height:60px;">登录/注册</span>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div  class="main_top ">
+        <em  class="location">
+            <span style="color:#999;float:left">当前位置：</span>
+            &nbsp;高新医院东北口</em>
+        <a href="" style="position: absolute;left:130px;">[切换地址]</a>
+        <input type="search" placeholder="搜索商家，美食......">
+    </div>
+    <div  class="main_nav">
+        <img src="image/takeout.408a87.png" alt="" style="width:190px;position: absolute;right:0;top:43px;">
+        <div class="main_nav_left">商家分类:</div>
+        <ul class=" " style="width:90%;padding-top:8px;float:left;">
+            <li class="sub_menu" style="background: #f6f6f6;padding: 5px 10px;">全部商家</li>
+            <li class="sub_menu">美食</li>
+            <li class="sub_menu">快餐便当</li>
+            <li class="sub_menu">特色菜系</li>
+            <li class="sub_menu">异国料理</li>
+            <li class="sub_menu">小吃夜宵</li>
+            <li class="sub_menu">甜品饮品</li>
+            <li class="sub_menu">果蔬生鲜</li>
+            <li class="sub_menu">商品超市</li>
+            <li class="sub_menu">鲜花绿植</li>
+            <li class="sub_menu">医药健康</li>
+            <li class="sub_menu">早餐</li>
+            <li class="sub_menu">午餐</li>
+            <li class="sub_menu" >下午茶</li>
+            <li class="sub_menu">晚餐</li>
+            <li class="sub_menu">夜宵</li>
+        </ul>
+    </div>
+    <div  class="main_content" >
+        <ul class="list-inline" style="height:278px;padding:0;margin:0;">
+            <li class="main_li" >
+                <div class="main_li_left">
+                    <img src="image/toupai.webp" alt="">
+                    <span class="takeout_time">41分钟</span>
+                </div>
+                <div class="main_li_right">
+                    <p class="main_li_cooking">头牌炒饭</p>
+                    <img src="image/threestars.png" style="height:14px;margin-top: -13px;">
+                    <p class="main_li_reduce">优惠配送费￥2.6</p>
+                    <div class="main_bao">保</div>
+                </div>
+                <div  class="detail" >
+                    <span class="sanjiao_left_grey" ></span> <span class="sanjiao_left_white" ></span>
+                    <p class="main_li_cooking_new">头牌炒饭</p>
+                    <p class="main_li_reduce">炒米饭 简餐</p>
+                    <hr width="100%">
+                    <div class="note_arrive">
+                        <div class="arrive_money">配送费为￥2.6</div>
+                        <div class="arrive">平均<span style="color:red;">41</span>分钟送达</div>
+                    </div>
+                </div>
+            </li>
+            <li class="main_li">
+                <div class="main_li_left">
+                    <img src="image/bishengke.webp" alt="">
+                    <span class="takeout_time">35分钟</span>
+                </div>
+                <div class="main_li_right">
+                    <p class="main_li_cooking">必胜客宅急送（高新店）</p>
+                    <img src="image/fivestars.png" alt="" style="height:14px;margin-top: -13px;">
+                    <p class="main_li_reduce">配送费￥5.5</p>
+                    <div class="main_bao">票</div>
+                </div>
+                <div  class="detail" >
+                    <span class="sanjiao_left_grey" ></span> <span class="sanjiao_left_white" ></span>
+                    <p class="main_li_cooking_new">必胜客宅急送（高新店）</p>
+                    <p class="main_li_reduce">汉堡 炸鸡炸串</p>
+                    <hr width="100%">
+                    <div  style="float:left;width:100%;margin:10px 0;">
+                        <span class="main_bao" style="display:inline-block;">票</span>
+                        <span style="color:#666;padding:5px;"> 该商家支持开发票，请在下单时填写好发票抬头</span>
+                    </div>
+                    <div class="note_arrive">
+                        <div class="arrive_money">配送费为￥5.5</div>
+                        <div class="arrive">平均<span style="color:red;">35</span>分钟送达</div>
+                    </div>
+                    <p class="note">配送费现从9元优惠至5元,该优惠将在小票的本单优惠金额中立减。用餐高峰时间可能会延长送餐时间，请以实际送餐时间为准。如果需要Fapiao请在订单备注Fapiao,我们将为您提供电子Fapiao提取码。比萨尺寸为英寸,指烤盘的直径,仅供参考,实际规格请以克重为准。</p>
+                </div>
+            </li>
+
+            <li class="main_li">
+                <div class="main_li_left">
+                    <img src="image/e4.png" alt="" style="height:70px;width:70px;">
+                    <span class="takeout_time" style="color:#cc0000;">45+分钟</span>
+                </div>
+                <div class="main_li_right">
+                    <p class="main_li_cooking" >小六汤包(大寨路店)</p>
+                    <img src="image/fourstars.png" alt="" style="height:14px;margin-top: -13px;">
+                    <img src="image/pinpaii.png" alt="" style="position: absolute;top:20px;right:164px;width:42px;">
+                    <p class="main_li_reduce">优惠配送费￥2.1</p>
+                    <div class="main_bao" style="border-radius:3px;border:1px solid #14ae18;width:auto;color:#14ae18">可预订，6:30后送餐</div>
+                </div>
+                <div  class="detail" >
+                    <span class="sanjiao_left_grey" ></span> <span class="sanjiao_left_white" ></span>
+                    <p class="main_li_cooking_new">小六汤包</p>
+                    <p class="main_li_reduce">包子粥店 西北菜</p>
+                    <hr width="100%">
+                    <div class="note_arrive">
+                        <div class="arrive_money">配送费为￥2.6</div>
+                        <div class="arrive">平均<span style="color:red;">45</span>分钟送达</div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="main_li">
+                <div class="main_li_left">
+                    <img src="image/guotie.webp" alt="" style="height:70px;width:70px;">
+                    <span class="takeout_time">36分钟</span>
+                </div>
+                <div class="main_li_right">
+                    <p class="main_li_cooking">海荣锅贴(群贤路店)</p>
+                    <img src="image/twostars.png" alt="" style="height:14px;margin-top: -13px;">
+                    <img src="image/pinpaii.png" alt="" style="position: absolute;top:20px;right:164px;width:42px;">
+                    <p class="main_li_reduce">配送费￥4.1</p>
+                </div>
+                <div  class="detail">
+                    <span class="sanjiao_left_grey" ></span> <span class="sanjiao_left_white" ></span>
+                    <p class="main_li_cooking_new">海荣锅贴(群贤路店)</p>
+                    <p class="main_li_reduce">生煎锅贴 西北菜</p>
+                    <hr width="100%">
+                    <div class="note_arrive">
+                        <div class="arrive_money">配送费为￥4.1 </div>
+                        <div class="arrive">平均<span style="color:red;">36</span>分钟送达</div>
+                    </div>
+                </div>
+            </li>
+            <li class="main_li">
+                <div class="main_li_left">
+                    <img src="image/niuroumian.webp" alt="">
+                    <span class="takeout_time">37分钟</span>
+                </div>
+                <div class="main_li_right">
+                    <p class="main_li_cooking">这家店不错牛肉面(高新店)</p>
+                    <img src="image/fourstars.png" alt="" style="height:14px;margin-top: -13px;">
+                    <p class="main_li_reduce">配送费￥2.6</p>
+                    <div class="main_bao" style="border-radius:3px;border:1px solid #14ae18;width:auto;color:#14ae18">可预订，9:20后送餐</div>
+                </div>
+                <div  class="detail" >
+                    <span class="sanjiao_left_grey" ></span> <span class="sanjiao_left_white" ></span>
+                    <p class="main_li_cooking_new">这家店不错牛肉面(高新店)</p>
+                    <p class="main_li_reduce">好吃  香辣</p>
+                    <hr width="100%">
+                    <div  style="float:left;width:100%;margin:10px 0;">
+                        <span class="main_bao" style="display:inline-block;">票</span>
+                        <span style="color:#666;padding:5px;"> 该商家支持开发票，请在下单时填写好发票抬头</span>
+                    </div>
+                    <div class="note_arrive">
+                        <div  class="arrive_money">配送费为￥2.6 </div>
+                        <div class="arrive">平均<span style="color:red;">37</span>分钟送达</div>
+                    </div>
+                    <p class="note">张军擀面皮岐山面是陕西关中地区有名的小吃面食类餐饮品牌名店，遍布全国千余家连锁、加盟商分店！本店在此地己有七年之久！餐品物美价廉、老少皆宜！方圆数里较受欢迎！特别是擀面皮、肉夹馍、扯面拉条子美味传名！欢迎各位品尝指导！请各位收藏本店！不断有各种优惠活动！注意中午太忙不方便接电话！</p>
+                </div>
+            </li>
+            <li class="main_li">
+                <div class="main_li_left">
+                    <img src="image/shuijiao.webp" alt=""  style="height:70px;width:70px;">
+                    <span class="takeout_time">45分钟</span>
+                </div>
+                <div class="main_li_right">
+                    <p class="main_li_cooking">喜唐精致水饺(西安高新店)</p>
+                    <img src="image/fourstars.png" alt="" style="height:14px;margin-top: -13px;">
+                    <img src="image/pinpaii.png" alt="" style="position: absolute;top:20px;right:164px;width:42px;">
+                    <p class="main_li_reduce">配送费￥3.1</p>
+                    <div class="main_bao">保</div>
+                </div>
+                <div  class="detail" >
+                    <span class="sanjiao_left_grey" ></span> <span class="sanjiao_left_white" ></span>
+                    <p class="main_li_cooking_new">喜唐精致水饺(西安高新店)）</p>
+                    <p class="main_li_reduce">水饺 干饺</p>
+                    <hr width="100%">
+                    <div  style="float:left;width:100%;margin:10px 0;">
+                        <span class="main_bao" style="display:inline-block;">票</span>
+                        <span style="color:#666;padding:5px;"> 该商家支持开发票，请在下单时填写好发票抬头</span>
+                    </div>
+                    <div class="note_arrive">
+                        <div class="arrive_money">配送费为￥2.6</div>
+                        <div class="arrive">平均<span style="color:red;">41</span>分钟送达</div>
+                    </div>
+                </div>
+            </li>
+            <li class="main_li">
+                <div class="main_li_left">
+                    <img src="image/bishengke.webp" alt="">
+                    <span class="takeout_time">35分钟</span>
+                </div>
+                <div class="main_li_right">
+                    <p class="main_li_cooking">必胜客宅急送（高新店）</p>
+                    <img src="image/fivestars.png" alt="" style="height:14px;margin-top: -13px;">
+                    <p class="main_li_reduce">配送费￥5.5</p>
+                    <div class="main_bao">票</div>
+                </div>
+                <div  class="detail" >
+                    <span class="sanjiao_left_grey" ></span> <span class="sanjiao_left_white" ></span>
+                    <p class="main_li_cooking_new">必胜客宅急送（高新店）</p>
+                    <p class="main_li_reduce">汉堡 炸鸡炸串</p>
+                    <hr width="100%">
+                    <div  style="float:left;width:100%;margin:10px 0;">
+                        <span class="main_bao" style="display:inline-block;">票</span>
+                        <span style="color:#666;padding:5px;"> 该商家支持开发票，请在下单时填写好发票抬头</span>
+                    </div>
+                    <div class="note_arrive">
+                        <div class="arrive_money">配送费为￥5.5</div>
+                        <div class="arrive">平均<span style="color:red;">35</span>分钟送达</div>
+                    </div>
+                    <p class="note">配送费现从9元优惠至5元,该优惠将在小票的本单优惠金额中立减。用餐高峰时间可能会延长送餐时间，请以实际送餐时间为准。如果需要Fapiao请在订单备注Fapiao,我们将为您提供电子Fapiao提取码。比萨尺寸为英寸,指烤盘的直径,仅供参考,实际规格请以克重为准。</p>
+                </div>
+            </li>
+            <li class="main_li">
+                <div class="main_li_left">
+                    <img src="image/huangmenji.webp" alt="" style="width:70px;height:70px;">
+                    <span class="takeout_time" style="color:#cc0000;">45+分钟</span>
+                </div>
+                <div class="main_li_right">
+                    <p class="main_li_cooking">黄焖鸡米饭（高新店）</p>
+                    <img src="image/threestars.png" alt="" style="height:14px;margin-top: -13px;">
+                    <img src="image/pinpaii.png" alt="" style="position: absolute;top:20px;right:164px;width:42px;">
+                    <p class="main_li_reduce">优惠配送费￥3.6</p>
+                    <div class="main_bao">保</div>
+                </div>
+                <div  class="detail">
+                    <span class="sanjiao_left_grey" ></span> <span class="sanjiao_left_white" ></span>
+                    <p class="main_li_cooking_new">黄焖鸡米饭（高新店）</p>
+                    <p class="main_li_reduce">可口美味</p>
+                    <hr width="100%">
+                    <div class="note_arrive">
+                        <div class="arrive_money">配送费为￥3.5 </div>
+                        <div class="arrive">平均<span style="color:red;">36</span>分钟送达</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div style="font-size: 18px;text-align: center;line-height: 54px;">查看更多商家，请先<a href="">登录</a></div>
+    </div>
+</div>
+<div  class="footer" >
+    <div style="width:1180px;margin:0 auto;padding-top: 40px;">
+        <div class="footer_left" >
+            <dl >
+                <dt>用户帮助</dt>
+                <dd>我的客服</dd>
+            </dl>
+            <dl>
+                <dt>商务合作</dt>
+                <dd>我要开店</dd>
+                <dd>加盟指南</dd>
+                <dd>市场合作</dd>
+                <dd>开放平台</dd>
+            </dl>
+            <dl>
+                <dt>关于我们</dt>
+                <dd>饿了么介绍</dd>
+                <dd>加入我们</dd>
+                <dd>联系我们</dd>
+                <dd>规则介绍</dd>
+            </dl>
+        </div>
+        <div class="footer_right" >
+            <div style="padding:10px 0  10px 37px;float:left;border-left:1px solid #e6e6e6">
+                <span style="color:#666">24小时热线服务：10105757</span>
+                <div style="color:#666;margin-top: 12px;position: relative">关注我们：
+                    <div style="margin-right:250px;float:right;">
+                        <div class="weixin" style="position: relative">
+                            <div class="wechat_box">
+                                <img  src="image/wexinqc100@2x.393ade.png" alt="" style="width: 130px;">
+                                <p style="font-size: 14px;text-align:center;margin-top:-5px;color:#999;">微信号: elemeorder</p>
+                                <p style="font-size: 14px;text-align:center;margin-top:-17px;color:#999;">饿了么网上订餐</p>
+                            </div>
+                        </div>
+                        <div class="weibo" ></div>
+                    </div>
+                </div>
+            </div>
+            <div style="width:225px;float:right;position: relative">
+                <img src="image/wexinqc100@2x.393ade.png" alt="" style="width:90px;position: absolute;top:-80px;right:170px;">
+                <div style="position: absolute;top:-60px;right:20px;">
+                    <span class="downlown">下载手机版</span><br>
+                    <span class="convinent">扫一扫，手机订餐更方便</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
